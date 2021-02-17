@@ -7,7 +7,7 @@ phases:
       - CACHED_FILE='docker-img-cache/cache/test.md'
   build:
     commands:
-      - ls $CACHE_DIR/cache
+      - ls $CACHE_DIR/cache || true
       - ls -sh $CACHED_FILE || true
       # If file exist, print its content and size
       - if [ -f $CACHED_FILE ]; then echo "File is in cache"; ls -sh $CACHED_FILE; cat $CACHED_FILE ; fi
