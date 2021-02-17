@@ -10,10 +10,10 @@ phases:
       - ls $CACHE_DIR
       - ls -sh $CACHED_FILE || true
       # If file exist, print its content and size
-      - if [ -f $CACHED_FILE ]; then echo "File is in cache"; ls -sh $CACHED_FILE; fi
+      - if [ -f $CACHED_FILE ]; then echo "File is in cache"; ls -sh $CACHED_FILE; cat $CACHED_FILE ; fi
       # Else create file, print its size
       - if ! [ -f $CACHED_FILE ]; then echo "Hello cache world" > $CACHED_FILE; echo "File created"; ls -sh $CACHED_FILE; fi
       - ls $CACHE_DIR
 cache:
   paths:
-    - 'docker-img-cache'
+    - 'docker-img-cache/**/*'
