@@ -7,7 +7,7 @@ env:
 phases:
   pre_build:
     commands:
-      - CACHED_FILE=$IMAGE_CACHE_ROOT/test.md'
+      - CACHED_FILE=$IMAGE_CACHE_ROOT/test.md
   build:
     commands:
       - mkdir -p || true
