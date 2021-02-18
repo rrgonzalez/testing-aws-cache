@@ -1,19 +1,23 @@
 version: 0.2
 
+env:
+  variables:
+    IMAGE_CACHE_ROOT: /root/.docker-cache
+
 phases:
   pre_build:
     commands:
-      - CACHE_DIR='docker-img-cache'
-      - CACHED_FILE='docker-img-cache/cache/test.md'
+      - CACHED_FILE=$IMAGE_CACHE_ROOT/test.md'
   build:
     commands:
-      - ls $CACHE_DIR/cache || true
+      - mkdir -p || true
+      - ls $IMAGE_CACHE_ROOT || true
       - ls -sh $CACHED_FILE || true
       # If file exist, print its content and size
       - if [ -f $CACHED_FILE ]; then echo "File is in cache"; ls -sh $CACHED_FILE; cat $CACHED_FILE ; fi
       # Else create file, print its size
-      - if ! [ -f $CACHED_FILE ]; then mkdir -p $CACHE_DIR/cache; echo "Hello cache world" > $CACHED_FILE; echo "File created"; ls -sh $CACHED_FILE; fi
-      - ls $CACHE_DIR/cache
+      - if ! [ -f $CACHED_FILE ]; then echo "Hello cache world" > $CACHED_FILE; echo "File created"; ls -sh $CACHED_FILE; fi
+      - ls $IMAGE_CACHE_ROOT
 cache:
   paths:
-    - 'docker-img-cache/**/*'
+    - /root/.docker-cache/*
