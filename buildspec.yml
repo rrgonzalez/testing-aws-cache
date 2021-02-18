@@ -10,7 +10,6 @@ phases:
       - CACHED_FILE=$IMAGE_CACHE_ROOT/test.md
   build:
     commands:
-      - mkdir -p || true
       - ls $IMAGE_CACHE_ROOT || true
       - ls -sh $CACHED_FILE || true
       # If file exist, print its content and size
