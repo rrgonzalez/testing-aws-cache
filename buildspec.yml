@@ -19,4 +19,4 @@ phases:
       - ls $IMAGE_CACHE_ROOT
 cache:
   paths:
-    - /root/**
+    - /root/*
